@@ -1,0 +1,44 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+body, html{
+   width: 100%;
+   height: 100%;
+}
+#canvas {
+   display: block;
+}
+#h1 {
+  margin-left: auto;
+}
+#chatWindow{
+  height: 690px;
+  overflow: scroll;
+}
+#messageWindow{
+  display: none;
+}
+#chats{
+  list-style-type: none;
+  margin-top:10px;
+  background-color: #EEEEEE;
+}
+.draw{
+  display: inline-block;
+}
+.chat{
+  display: inline-block;
+}
+.actions{
+  display: block;
+}
+.you{
+  text-align: left;
+}
+.me{
+  text-align: right;
+}
+.system{
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Scribbel",
+  "version": "1.0.0",
+  "description": "All in one fun!",
+  "main": "server.js",
+  "dependencies": {
+    "aws-sdk": "^2.2.33",
+    "express": "^4.13.4",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wolfen601/CloudComputingAssignment2.git"
+  },
+  "author": "Kevichino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wolfen601/CloudComputingAssignment2/issues"
+  },
+  "homepage": "https://github.com/wolfen601/CloudComputingAssignment2"
+}
