@@ -1,10 +1,12 @@
 {
-  "name": "Scribbel",
+  "name": "Werk",
   "version": "1.0.0",
-  "description": "All in one fun!",
+  "description": "Track productivity easy!",
   "main": "server.js",
   "dependencies": {
-    "aws-sdk": "^2.2.33",
+    "aws-sdk": "^2.2.38",
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
     "socket.io": "^1.4.5"
   },

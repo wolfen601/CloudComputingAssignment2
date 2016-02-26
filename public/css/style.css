@@ -1,44 +1,421 @@
+/*------------- Reset browser differences ------------- */
+
 * {
-   margin: 0;
-   padding: 0;
+	padding: 0;
+	margin: 0;
 }
-body, html{
-   width: 100%;
-   height: 100%;
+/* ------------ Body styles ------------ */
+
+body {
+	background-color: #f0f1f3;
+	color:#667073;
+	font: 16px/1.3 'Arial',sans-serif;
 }
-#canvas {
-   display: block;
+/* ------------ Header styles ------------ */
+
+header {
+  margin:30px;
+  font: 30px/1.3 'Arial',sans-serif;
 }
-#h1 {
-  margin-left: auto;
+
+#infoHead{
+  margin-bottom: 30px;
 }
+
+/* ------ Home ------ */
+
+.homebuttons {
+	text-align:center;
+	margin-top:140px;
+}
+
+#login {
+	width: 300px;
+	height: 100px;
+	background-color: #70b1d1;
+	text-align:center;
+	display: block;
+	margin:0px auto;
+	border-radius: 3px;
+	box-shadow: 0px 5px 5px #e4e8e7;
+	text-decoration: none;
+	margin-bottom: 30px;
+	color: #eeffff;
+}
+#login:visited {
+	color: #eeffff;
+	text-decoration: none;
+}
+#loginButton {
+	padding-top: 30px;
+}
+#signup {
+	width: 300px;
+	height: 100px;
+	background-color: #70b1d1;
+	text-align:center;
+	display: block;
+	margin:0px auto;
+	border-radius: 3px;
+	box-shadow: 0px 5px 5px #e4e8e7;
+	text-decoration: none;
+	margin-bottom: 70px;
+	color: #eeffff;
+}
+#signup:visited {
+	color: #eeffff;
+	text-decoration: none;
+}
+#signupButton {
+	padding-top: 30px;
+}
+#logout {
+	float: right;
+	width: 200px;
+	height: 60px;
+	background-color: #B34848;
+	text-align:center;
+	display: block;
+	border-radius: 3px;
+	box-shadow: 0px 5px 5px #e4e8e7;
+	text-decoration: none;
+	margin-bottom: 20px;
+	color: #eeffff;
+}
+#logout:visited {
+	color: #eeffff;
+	text-decoration: none;
+}
+#logoutButton {
+	padding-top: 20px;
+}
+
+#newTask {
+	width: 200px;
+	height: 60px;
+	background-color: #579868;
+	text-align:center;
+	display: block;
+	border-radius: 3px;
+	box-shadow: 0px 5px 5px #e4e8e7;
+	text-decoration: none;
+	margin-bottom: 20px;
+	color: #eeffff;
+}
+#newTask:visited {
+	color: #eeffff;
+	text-decoration: none;
+}
+#newTaskButton {
+	padding-top: 20px;
+}
+
+/* ------ Login/Signup ------ */
+#connect {
+  text-align:center;
+	display: block;
+	margin:0px auto;
+	width: 700px;
+	height: 400px;
+	background-color: #ffffff;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	color: #637277;
+}
+#back{
+  float: right;
+	width: 70px;
+	height: 40px;
+	text-align:center;
+	background-color: #D47373;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+  padding-top: 10px;
+}
+#infoConnect {
+	text-align: left;
+	float: right;
+	margin: 80px 250px 0 0;
+}
+#yourName {
+	float:left;
+	padding-left:10px;
+	width: 150px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	background-color: #f0f1f3;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	margin-bottom:20px;
+	overflow: hidden;
+}
+
+#yourPassword {
+	float:left;
+	padding-left: 10px;
+	width: 200px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	background-color: #f0f1f3;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	margin-bottom:40px;
+}
+
+#yourEnter {
+	float:left;
+	width: 110px;
+	height: 40px;
+	text-align:center;
+	background-color: #73b4d4;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+/* ------ No Messages ------ */
+
+
+.nomessages {
+	text-align:center;
+	display: block;
+	margin:0px auto;
+	width: 750px;
+	height: 300px;
+	background-color: #ffffff;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	color: #637277;
+	margin-bottom: 400px;
+}
+.nomessages h2 {
+	padding-top: 50px;
+	overflow: hidden;
+	padding-bottom: 6px;
+}
+.nomessages h5 {
+	font-weight: normal;
+	margin-bottom: 100px;
+}
+
+#noMessagesImage {
+	float: left;
+	margin: 90px 0 0 140px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+#img {
+	float: left;
+	margin: 90px 0 0 140px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.info {
+	text-align: left;
+	float: right;
+	margin: 65px 60px 0 0;
+	width: 405px;
+	overflow: hidden;
+}
+.nickname-chat {
+	overflow: hidden;
+}
+
+/* ------ Chat Screen ------ */
+
 #chatWindow{
-  height: 690px;
+  height: 600px;
   overflow: scroll;
+	display: none;
+	margin-left: 100px;
+	margin-right: 100px;
 }
-#messageWindow{
-  display: none;
+
+.image {
+	clear:both;
+	float:left;
+	height: 160px;
+	width: 80px;
+	text-align:center;
+	overflow: hidden;
 }
-#chats{
-  list-style-type: none;
-  margin-top:10px;
-  background-color: #EEEEEE;
+
+.image img {
+	float: left;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
 }
-.draw{
-  display: inline-block;
+
+.body {
+	text-align:center;
+	width: 40%;
+	display: block;
+	margin:0px auto 650px;
+	background-color: #ffffff;
+	color: #637277;
 }
-.chat{
-  display: inline-block;
+
+.chats {
+	list-style-type: none;
+	margin-top:10px;
 }
-.actions{
-  display: block;
+
+.you {
+	clear:both;
+	float:left;
+	margin-bottom:10px;
 }
-.you{
+
+.me {
+	clear:both;
+	float:right;
+	margin-bottom:10px;
+}
+
+.me .image{
+	float:right;
+}
+
+.chats .you p {
+	text-align:left;
+	float: left;
+	display: inline-block;
+	margin-left: 20px;
+	margin-bottom:30px;
+	padding: 25px 34px;
+	min-width: 160px;
+	min-height: 10px;
+	max-width: 510px;
+	background-color: #FFF;
+	border-radius: 3px;
+	box-shadow: 0px 3px 3px #E3E4E6;
+	color: #637277;
+	line-height: 1.4;
+	word-wrap: break-word;
+}
+
+.chats .me p {
+	text-align:left;
+	float: left;
+	display: inline-block;
+	margin-right:20px;
+	margin-bottom:30px;
+	padding: 25px 34px;
+	min-width: 160px;
+	min-height: 10px;
+	max-width: 510px;
+	background-color: #FFF;
+	border-radius: 3px;
+	box-shadow: 0px 3px 3px #E3E4E6;
+	color: #637277;
+	line-height: 1.4;
+	word-wrap: break-word;
+}
+
+.image b {
+	overflow: hidden;
+	display: block;
+	clear: both;
+	padding-top: 7px;
+}
+
+.image i{
+	font-size: 12px;
+	line-height: 1.2;
+	display: block;
+	opacity: 0.8;
+	padding-top: 4px;
+}
+
+
+/* ------------ Footer styles ------------ */
+
+footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding-top: 30px;
+	background-color: white;
+	height: 130px;
+}
+#chatform {
+	width:700px;
+	margin: 0 auto;
+	background-color: white;
+}
+
+#message {
+	width: 550px;
+	height: 80px;
+	display: block;
+	float:left;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+	border: 1px solid #cccccc;
+	border-radius: 2px;
+	padding-left: 20px;
+	padding-top: 20px;
+	resize: none;
+	font:inherit;
+	color:inherit;
+}
+
+#send {
+	width: 110px;
+	height: 60px;
+	float:right;
+	text-align:center;
+	background-color: #73b4d4;
+	display: block;
+	margin: 0 auto;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 17px;
+	outline: none;
+	cursor:pointer;
+}
+
+/* ------------ Table styles ------------ */
+#tasks{
+	overflow: auto;
+	height: 600px;
+}
+.table{
+		width: 80%;
+		max-width: 80%;
+		margin: 0 auto;
+}
+table {
   text-align: left;
+  font-size: 12px;
+  font-family: verdana;
+  background: #c0c0c0;
 }
-.me{
-  text-align: right;
+table thead tr, table tfoot tr {
+  background: #c0c0c0;
 }
-.system{
-  text-align: center;
+table tbody tr {
+  background: #f0f0f0;
+}
+td, th {
+  border: 1px solid white;
 }

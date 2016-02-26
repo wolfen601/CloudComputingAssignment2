@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Werk</title>
+      <meta charset="utf-8">
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="../css/style.css" />
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="../js/client.js"></script>
+   </head>
+   <body>
+     <header>
+       <h1>Werk
+         <small>Track productivity easy!</small>
+       </h1>
+     </header>
+       <ul class="nav nav-tabs">
+         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+         <li><a data-toggle="tab" href="#tasks">Tasks</a></li>
+         <li><a data-toggle="tab" href="#chat">Chat</a></li>
+       </ul>
+
+       <div class="tab-content">
+         <div id="home" class="tab-pane fade in active">
+           <div>
+             <h4>Number of Easy Tasks:  <span id="easyTasks"></span></h4>
+             <h4>Number of Medium Tasks:  <span id="mediumTasks"></span></h4>
+             <h4>Number of Hard Tasks:  <span id="hardTasks"></span></h4>
+             <h4>Number of Tasks:  <span id="numTasks"></span></h4>
+             <h4>Total points:  <span id="totalPoints"></span></h4>
+             <h4>Total completed:  <span id="numComplete"></span></h4>
+             <h4>Total active:  <span id="numActive"></span></h4>
+             <h4>Total failed:  <span id="numFailed"></span></h4>
+           </div>
+           <footer>
+             <a href="/" id="logout">
+               <div id="logoutButton">Log Out</div>
+             </a>
+           </footer>
+         </div>
+         <div id="tasks" class="tab-pane fade">
+           <table class="table table-hover" >
+               <thead>
+                 <tr>
+                   <th>Task Id</th>
+                   <th>Task Name</th>
+                   <th>Difficulty</th>
+                   <th>Points</th>
+                   <th>Created On</th>
+                   <th>Status</th>
+                 </tr>
+               </thead>
+               <tfoot>
+                 <tr>
+                   <th>Task Id</th>
+                   <th>Task Name</th>
+                   <th>Difficulty</th>
+                   <th>Points</th>
+                   <th>Created On</th>
+                   <th>Status</th>
+                   </tr>
+               </tfoot>
+               <tbody id="tableBody">
+
+               </tbody>
+           </table>
+
+           <footer>
+             <a href="#" id="newTask">
+               <div id="newTaskButton">New Task</div>
+             </a>
+           </footer>
+         </div>
+         <div id="chat" class="tab-pane fade">
+           <div id="nomessages" class="nomessages">
+
+          		<img src="../img/unnamed.jpg" id="noMessagesImage" />
+
+          		<div class="info">
+          			<h2>No messages.</h2>
+          			<h5>Send a message from the form below!</h5>
+          		</div>
+
+          	</div>
+           <div id="chatWindow" class="chatscreen">
+
+             <ul id="chats" class="chats">
+               <!-- The chat messages will go here -->
+             </ul>
+
+           </div>
+           <footer>
+             <div id="chatform">
+               <input type="text" id="message" placeholder="Write something.."></input>
+               <button id="send" >SEND</button>
+             </div>
+           </footer>
+         </div>
+       </div>
+   </body>
+</html>

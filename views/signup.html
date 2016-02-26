@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<title>Werk</title>
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/style.css" />
+<script src="/socket.io/socket.io.js"></script>
+  <body>
+    <header>
+      <h1>Werk
+        <small>Track productivity easy!</small>
+      </h1>
+    </header>
+
+    <div id="connect">
+      <div id="infoConnect">
+        <h2 class="infoHead">Sign Up</h2>
+        <form class="loginForm" method="post" action="/signup">
+      		<input type="text" name="user[name]" id="yourName" placeholder="Your username" /><br/>
+      		<input type="password" name="user[passwd]" id="yourPassword" placeholder="Your password" /><br/>
+      		<input type="submit" id="yourEnter" value="ENTER"/>
+          <a href="/" id="back">
+            <div id="backButton">Back</div>
+          </a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
