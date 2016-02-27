@@ -24,15 +24,15 @@
 
        <div class="tab-content">
          <div id="home" class="tab-pane fade in active">
-           <div>
-             <h4>Number of Easy Tasks:  <span id="easyTasks"></span></h4>
-             <h4>Number of Medium Tasks:  <span id="mediumTasks"></span></h4>
-             <h4>Number of Hard Tasks:  <span id="hardTasks"></span></h4>
-             <h4>Number of Tasks:  <span id="numTasks"></span></h4>
-             <h4>Total points:  <span id="totalPoints"></span></h4>
-             <h4>Total completed:  <span id="numComplete"></span></h4>
-             <h4>Total active:  <span id="numActive"></span></h4>
-             <h4>Total failed:  <span id="numFailed"></span></h4>
+           <div id="summary">
+             <h4>Number of Easy Tasks:  <span class="summarySpan" id="easyTasks"></span></h4>
+             <h4>Number of Medium Tasks:  <span class="summarySpan" id="mediumTasks"></span></h4>
+             <h4>Number of Hard Tasks:  <span class="summarySpan" id="hardTasks"></span></h4>
+             <h4>Number of Tasks:  <span class="summarySpan" id="numTasks"></span></h4>
+             <h4>Total points:  <span class="summarySpan" id="totalPoints"></span></h4>
+             <h4>Total completed:  <span class="summarySpan" id="numComplete"></span></h4>
+             <h4>Total active:  <span class="summarySpan" id="numActive"></span></h4>
+             <h4>Total failed:  <span class="summarySpan" id="numFailed"></span></h4>
            </div>
            <footer>
              <a id="logout">
@@ -41,7 +41,13 @@
            </footer>
          </div>
          <div id="tasks" class="tab-pane fade">
-           <table class="table table-hover" >
+           <div class="saveName">TaskId</div>
+           <div class="saveName">TaskName</div>
+           <div class="saveName">Difficulty</div>
+           <div class="saveName">Points</div>
+           <div class="saveName">CreatedOn</div>
+           <div class="saveName">Status</div>
+           <table id="taskTable" class="table table-striped" >
                <thead>
                  <tr>
                    <th>Task Id</th>
@@ -60,7 +66,7 @@
                    <th>Points</th>
                    <th>Created On</th>
                    <th>Status</th>
-                   </tr>
+                 </tr>
                </tfoot>
                <tbody id="tableBody">
 

@@ -206,10 +206,10 @@ io.on('connection', function (socket) {
         console.log("Error downloading data: ", errBucket);
       } else {
         console.log("Success downloading data: ", dataBucket);
-        taskList = JSON.parse(dataBucket.Body);
+        taskList = JSON.parse(dataBucket.Body).tasks;
       }
-      console.log('user: ' + user + '\n' + JSON.stringify(taskList.tasks));
-      io.emit('tasks', { username: user, tasks: taskList.tasks } );
+      console.log('user: ' + user + '\n' + JSON.stringify(taskList));
+      io.emit('tasks', { username: user, tasks: taskList} );
     });
   });
   //on message send detected, send message to all clients

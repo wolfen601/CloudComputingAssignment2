@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
        };
        drawRow(task);
        $('#popupForm').modal('toggle');
+       addStatusChanger();
      }
    };
    //logout
@@ -72,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
        for (var i = 0; i < taskList.length; i++) {
           drawRow(taskList[i]);
        }
+       updateTableColors();
      }
+     addStatusChanger();
      loadScores(taskList);
    });
   //show message
@@ -116,6 +119,40 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 800);
   });
 
+  function addStatusChanger(){
+    var statuses = document.getElementsByClassName('status');
+    for (i = 0; i < statuses.length; i++) {
+      statuses[i].onclick = function(){
+        var currentStatus = this.textContent;
+        if(currentStatus == "Complete"){
+          currentStatus = "Failed";
+        }else if(currentStatus == "Active"){
+          currentStatus = "Complete";
+        }else if(currentStatus == "Failed"){
+          currentStatus = "Active";
+        }
+        this.textContent = currentStatus;
+        updateTableColors();
+        var taskList = getTaskListFromTable();
+        loadScores(taskList.tasks);
+      };
+    }
+  }
+  function updateTableColors(){
+    var rows = $("#taskTable").find("tbody>tr");
+    for(var i = 0; i < rows.length; i++){
+      var row = rows[i];
+      var cell = row.cells[row.cells.length-1].textContent;
+      if(cell == "Complete"){
+        row.className = "success";
+      }else if (cell == "Failed") {
+        row.className = "danger";
+      }else{
+        row.className = "default";
+      }
+    }
+  }
+
   function checkTaskId(id) {
     return tasks.filter(
       function(task) {
@@ -125,14 +162,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   //draw row
   function drawRow(task){
-    var row = $("<tr />")
+    var row = $("<tr/>");
     $("#tableBody").append(row);
     row.append($("<td>" + task.TaskId + "</td>"));
     row.append($("<td>" + task.TaskName + "</td>"));
     row.append($("<td>" + task.Difficulty + "</td>"));
     row.append($("<td>" + task.Points + "</td>"));
     row.append($("<td>" + task.CreatedOn + "</td>"));
-    row.append($("<td>" + task.Status + "</td>"));
+    row.append($("<td class=status>" + task.Status + "</td>"));
   }
   //load scores
   function loadScores(taskList){
@@ -155,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
        }
        if(taskList[i].Status == "Complete"){
          completedCount ++;
-         points = points + taskList[i].Points;
+         points = points + parseInt(taskList[i].Points);
        }
        if(taskList[i].Status == "Active"){
          activeCount ++;
@@ -176,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function getTaskListFromTable(){
     var myRows = [];
     var headersText = [];
-    var $headers = $("th");
+    var $headers = $(".saveName");
 
     // Loop through grabbing everything
     var $rows = $("tbody tr").each(function(index) {
@@ -197,7 +234,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var myObj = {
         "tasks": myRows
     };
-    alert(JSON.stringify(myObj));
     return myObj;
   }
   //  // main loop, running every 25ms
