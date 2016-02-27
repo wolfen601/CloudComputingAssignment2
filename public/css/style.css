@@ -419,3 +419,9 @@ table tbody tr {
 td, th {
   border: 1px solid white;
 }
+
+
+/* ------------ Modal styles and Fix ------------ */
+div.modal div.modal-backdrop {
+    z-index: 0;
+}

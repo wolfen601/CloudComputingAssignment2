@@ -35,7 +35,7 @@
              <h4>Total failed:  <span id="numFailed"></span></h4>
            </div>
            <footer>
-             <a href="/" id="logout">
+             <a id="logout">
                <div id="logoutButton">Log Out</div>
              </a>
            </footer>
@@ -66,10 +66,9 @@
 
                </tbody>
            </table>
-
            <footer>
-             <a href="#" id="newTask">
-               <div id="newTaskButton">New Task</div>
+             <a href="#" id="newTask" data-toggle="modal" data-target="#popupForm">
+               <div id="newTaskButton" >New Task</div>
              </a>
            </footer>
          </div>
@@ -99,5 +98,33 @@
            </footer>
          </div>
        </div>
+
+       <div class="modal fade" id="popupForm" role="dialog">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Modal Header</h4>
+               </div>
+               <div class="modal-body">
+                 <form onsubmit="return false;">
+                      <div class="form-group">
+                        <label for="newTaskName">Task Name</label>
+                        <input type="text" class="form-control" id="newTaskName" placeholder="Fill this form">
+                      </div>
+                      <div class="form-group">
+                        <label for="newDifficulty">Difficulty</label>
+                        <select class="form-control" id="newDifficulty">
+                          <option>Easy</option>
+                          <option>Medium</option>
+                          <option>Hard</option>
+                        </select>
+                      </div>
+                      <button id="submitNewTask" class="btn btn-info">Submit</button>
+                    </form>
+               </div>
+             </div>
+           </div>
+         </div>
    </body>
 </html>

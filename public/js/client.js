@@ -4,52 +4,71 @@
 document.addEventListener("DOMContentLoaded", function() {
    var username = window.location.pathname.match(/\/user\/(.*)$/)[1];
    var socket  = io.connect();
+   var tasks;
    socket.emit('load', { username : username });
-   //chat
+   //chat send
    var send = document.getElementById('send');
    var sent = false;
+   send.onclick = function(){
+     sent = true;
+     var messageContent = document.getElementById('message');
+     var msg = messageContent.value;
+     socket.emit('sendMessage', { message: [ username, msg ] });
+   };
+   //create new task
+   var newTaskSubmit = document.getElementById('submitNewTask');
+   var newTaskName = document.getElementById('newTaskName');
+   var newDifficulty = document.getElementById('newDifficulty');
+   newTaskSubmit.onclick = function(){
+     var name = newTaskName.value;
+     var difficulty = newDifficulty.value;
+     if(name == ""){
+       alert("No name entered!");
+     }else{
+       var id = 100000;
+       var taken = "";
+       do{
+         id = Math.round((Math.random() * 1000000));
+         taken = checkTaskId(id);
+       }while(taken != "");
+       alert(id + " : " + name + " : " + difficulty);
+       var points = 0;
+       if(difficulty == "Easy"){
+         points = 2;
+       }else if(difficulty == "Medium"){
+         points = 5;
+       }
+       else if(difficulty == "Hard"){
+         points = 10;
+       }
+       var date = new Date();
+       var task = {
+           "TaskId": id,
+           "TaskName": name,
+           "Difficulty": difficulty,
+           "Points": points,
+           "CreatedOn": date.getDate()  + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear(),
+           "Status":"Active"
+       };
+       drawRow(task);
+       $('#popupForm').modal('toggle');
+     }
+   };
+   //logout
    var logout = document.getElementById('logout');
-   var newTask = document.getElementById('newTask');
-
-	send.onclick = function(){
-		sent = true;
-	};
-
-  newTask.onclick = function(){
-    alert('hi');
-  };
-
-  logout.onclick = function(){
-    var myRows = [];
-    var headersText = [];
-    var $headers = $("th");
-
-    // Loop through grabbing everything
-    var $rows = $("tbody tr").each(function(index) {
-      $cells = $(this).find("td");
-      myRows[index] = {};
-
-      $cells.each(function(cellIndex) {
-        // Set the header text
-        if(headersText[cellIndex] === undefined) {
-          headersText[cellIndex] = $($headers[cellIndex]).text();
-        }
-        // Update the row object with the header/cell combo
-        myRows[index][headersText[cellIndex]] = $(this).text();
-      });
-    });
-
-    // Let's put this in the object like you want and convert to JSON (Note: jQuery will also do this for you on the Ajax request)
-    var myObj = {
-        "tasks": myRows
-    };
-    alert(JSON.stringify(myObj));
-  };
+   var loggingOut = false;
+   logout.href = "/logout/" + username;
+   logout.onclick = function(){
+     loggingOut = true;
+     var taskList = getTaskListFromTable();
+     socket.emit('logout', { id : username , tasks : taskList});
+   };
    //SOCKETS
    socket.on('tasks', function(data){
      //alert('user: ' + data.username + '\n' + JSON.stringify(data.tasks) + '\n' + data.tasks.length );
      if(data.username == username){
-       taskList = data.tasks;
+       var taskList = data.tasks;
+       tasks = taskList;
        for (var i = 0; i < taskList.length; i++) {
           drawRow(taskList[i]);
        }
@@ -96,6 +115,14 @@ document.addEventListener("DOMContentLoaded", function() {
       scrollTop: $("#chatWindow")[0].scrollHeight
     }, 800);
   });
+
+  function checkTaskId(id) {
+    return tasks.filter(
+      function(task) {
+        return task.TaskId == id;
+      }
+    );
+  }
   //draw row
   function drawRow(task){
     var row = $("<tr />")
@@ -146,15 +173,43 @@ document.addEventListener("DOMContentLoaded", function() {
     $("#numActive").text(activeCount);
     $("#numFailed").text(failedCount);
   }
-   // main loop, running every 25ms
-   function mainLoop() {
-     if(sent == true){
-       sent = false;
-       var messageContent = document.getElementById('message');
-       var msg = messageContent.value;
-       socket.emit('sendMessage', { message: [ username, msg ] });
-     }
-      setTimeout(mainLoop, 25);
-   }
-   mainLoop();
+  function getTaskListFromTable(){
+    var myRows = [];
+    var headersText = [];
+    var $headers = $("th");
+
+    // Loop through grabbing everything
+    var $rows = $("tbody tr").each(function(index) {
+      $cells = $(this).find("td");
+      myRows[index] = {};
+
+      $cells.each(function(cellIndex) {
+        // Set the header text
+        if(headersText[cellIndex] === undefined) {
+          headersText[cellIndex] = $($headers[cellIndex]).text();
+        }
+        // Update the row object with the header/cell combo
+        myRows[index][headersText[cellIndex]] = $(this).text();
+      });
+    });
+
+    // Let's put this in the object like you want and convert to JSON (Note: jQuery will also do this for you on the Ajax request)
+    var myObj = {
+        "tasks": myRows
+    };
+    alert(JSON.stringify(myObj));
+    return myObj;
+  }
+  //  // main loop, running every 25ms
+  //  function mainLoop() {
+  //    if(sent == true){
+  //      sent = false;
+  //
+  //    }
+  //    if(loggingOut == true){
+  //      loggingOut = false;
+  //    }
+  //    setTimeout(mainLoop, 25);
+  //  }
+  //  mainLoop();
 });
