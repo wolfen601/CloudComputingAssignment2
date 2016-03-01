@@ -29,8 +29,8 @@ var users = {};
 /*******************
  * AWS Initialize  *
 *******************/
-var accessKeyId =  process.env.AWS_ACCESS_KEY || "AKIAI5F5H7SX4T2D7P3Q";
-var secretAccessKey = process.env.AWS_SECRET_KEY || "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";
+var accessKeyId =  process.env.AWS_ACCESS_KEY || "AKIAJLS3HVYFFLU2HYSQ";
+var secretAccessKey = process.env.AWS_SECRET_KEY || "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";
 var s3bucket = process.env.S3_BUCKET || "kevichino-cloud-computing";
 var table = "Users";
 aws.config.update({
